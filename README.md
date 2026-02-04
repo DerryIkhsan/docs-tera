@@ -1,7 +1,5 @@
-# 🚀 Project Name: E-Commerce API Service
+# 👨‍💻 Dokumentasi Bridging Open Api (V2 & V3)
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/yourusername/project)
-[![Node Version](https://img.shields.io/badge/node-v18.0.0-blue)](https://nodejs.org)
 [![Postman](https://img.shields.io/badge/Postman-FF6C37?logo=postman&logoColor=white)](https://www.postman.com/)
 
 ## 📖 Deskripsi
