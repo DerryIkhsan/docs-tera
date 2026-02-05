@@ -1,9 +1,7 @@
-# 👨‍💻 Dokumentasi Bridging Open Api (V2 & V3)
-
-[![Postman](https://img.shields.io/badge/Postman-FF6C37?logo=postman&logoColor=white)](https://www.postman.com/)
+# 📘 Dokumentasi Bridging Open Api (V2 & V3)
 
 ## 📖 Deskripsi
-Layanan backend microservice yang menangani transaksi pembayaran dan manajemen inventaris. Dibuat dengan arsitektur bersih untuk memudahkan skalabilitas.
+Bridging Open Api disediakan untuk menjembatani klien teramedik dalam memenuhi kebutuhan aplikasi ke-3 rumah sakit dalam bentuk web maupun mobile apps yang dikembangkan mandiri oleh vendor dari masing-masing rumah sakit.
 
 ---
 
