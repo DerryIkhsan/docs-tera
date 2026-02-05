@@ -6,6 +6,9 @@ Bridging Open Api disediakan untuk menjembatani klien teramedik dalam memenuhi k
 ---
 <img width="1920" height="1080" alt="Open API Cloud V2" src="https://github.com/user-attachments/assets/868ec9a5-eb4b-4928-93b2-cd07bedba98e" />
 
+
+<img width="1920" height="1080" alt="Open API Cloud V3" src="https://github.com/user-attachments/assets/74b4e63f-224e-411d-8a68-7f0cb9fb9374" />
+
 ## 📋 Daftar Isi
 1. [Prasyarat](#-prasyarat)
 2. [Instalasi](#-instalasi)
