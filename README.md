@@ -3,6 +3,7 @@
 ## 📖 Deskripsi
 Bridging Open Api disediakan untuk menjembatani klien teramedik dalam memenuhi kebutuhan aplikasi ke-3 rumah sakit dalam bentuk web maupun mobile apps yang dikembangkan mandiri oleh vendor dari masing-masing rumah sakit.
 
+Cloud Apps Setup digunakan utk mapping open api antara his dengan cloud open api.
 ---
 
 ## 📋 Daftar Isi
