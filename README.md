@@ -1,11 +1,11 @@
-# 📘 Dokumentasi Bridging Open Api (V2 & V3)
+# 📘 Dokumentasi Bridging Open Api dan Cloud Apps Setup (V2 & V3)
 
 ## 📖 Deskripsi
 Bridging Open Api disediakan untuk menjembatani klien teramedik dalam memenuhi kebutuhan aplikasi ke-3 rumah sakit dalam bentuk web maupun mobile apps yang dikembangkan mandiri oleh vendor dari masing-masing rumah sakit.
 
 ---
 
-## 🗺️ Daftar Isi
+## 📋 Daftar Isi
 1. [Prasyarat](#-prasyarat)
 2. [Instalasi](#-instalasi)
 3. [Arsitektur Sistem](#-arsitektur-sistem)
