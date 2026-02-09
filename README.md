@@ -4,7 +4,7 @@
 
 ## 📋 Daftar Isi
 1. [Open API Cloud](#-open-api-cloud)
-2. [Arsitektur Open API Cloud](#-arsitektur-open-api-cloud)
+2. [Arsitektur Open API Cloud](#-arsitektur-api)
 3. [Collection Open API Cloud](#-collection-open-api-cloud)
 4. [Path Project Open API Cloud](#-path-project-open-api-cloud)
 
@@ -17,7 +17,7 @@ Untuk site rumah sakit yang masih menggunakan Open API V2 diantaranya brawijaya,
 
 ---
 
-## Arsitektur Open API Cloud
+## Arsitektur API
 <img width="1920" height="1080" alt="Arsitektur Open API Cloud V2" src="https://github.com/user-attachments/assets/265a2009-d045-4378-8ce2-d77de5ae60ab" />
 
 ---
