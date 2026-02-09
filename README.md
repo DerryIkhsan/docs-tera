@@ -43,7 +43,7 @@ Dokumen koleksi API dapat diunduh pada tautan berikut:
 
 ---
 
-## <a name="path-project"></a>🌐 Path Project Open API Cloud
+## <a name="path-project"></a>📂 Path Project Open API Cloud
 
 ### 1. Open API Cloud V2 (Server ALI CLOUD)
 * **Production**
