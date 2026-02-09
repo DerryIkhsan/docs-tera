@@ -6,7 +6,7 @@
 1. [Open API Cloud](#-open-api-cloud)
 2. [Arsitektur Open API Cloud](#-arsitektur-open-api-cloud)
 3. [Collection Open API Cloud](#-collection-open-api-cloud)
-4. [Path Project Open API Cloud](#-source-project-open-api-cloud)
+4. [Path Project Open API Cloud](#-path-project-open-api-cloud)
 
 ---
 
