@@ -1,13 +1,15 @@
-# 📘 Dokumentasi Open Api dan Cloud Apps Setup (V2 & V3)
+# 📘 Catatan Teknis Open Api dan Cloud Apps Setup (V2 & V3)
 
 ## 📖 Deskripsi
 Bridging Open Api disediakan untuk menjembatani klien teramedik dalam memenuhi kebutuhan aplikasi ke-3 rumah sakit dalam bentuk web maupun mobile apps yang dikembangkan mandiri oleh vendor dari masing-masing rumah sakit, sedangkan Cloud Apps Setup digunakan untuk mapping open api antara his dengan Cloud Open Api.
 
 ---
-<img width="1920" height="1080" alt="Open API Cloud V2" src="https://github.com/user-attachments/assets/868ec9a5-eb4b-4928-93b2-cd07bedba98e" />
+
+<img width="1920" height="1080" alt="Open API Cloud V2 (2)" src="https://github.com/user-attachments/assets/265a2009-d045-4378-8ce2-d77de5ae60ab" />
 
 
-<img width="1920" height="1080" alt="Open API Cloud V3" src="https://github.com/user-attachments/assets/74b4e63f-224e-411d-8a68-7f0cb9fb9374" />
+<img width="1920" height="1080" alt="Open API Cloud V3 (1)" src="https://github.com/user-attachments/assets/5a971d48-f8c7-46cc-94c5-4fa2a87ab36b" />
+
 
 ## 📋 Daftar Isi
 1. [Prasyarat](#-prasyarat)
