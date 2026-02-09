@@ -1,0 +1,1285 @@
+{
+  "info": {
+    "_postman_id": "8d5abac7-ff6c-451d-9e1e-25986eee01d3",
+    "name": "Open API V3",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "33469993"
+  },
+  "item": [
+    {
+      "name": "Login",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "password",
+                  "value": "tera_demo_api",
+                  "type": "text"
+                },
+                {
+                  "key": "username",
+                  "value": "123456",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/login",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "login"
+              ]
+            },
+            "description": "Login untuk mendapatkan token. Token tersebut akan dipakai untuk akses APi Resources"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "General",
+      "item": [
+        {
+          "name": "Get Doctors by Hospital",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 126\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/doctors?page=1",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "doctors"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Policlinics by Hospital",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\" : 126\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/poli",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "poli"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Policlinics by Department",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\" : 126\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/poli",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "poli"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Specialist by Hospital",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 126\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/specialist",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "specialist"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Doctors by Polyclinic",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 126\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/doctorsbypoli/33",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "doctorsbypoli",
+                "33"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Doctors by Specialist",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 126\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/doctorsbyspecialist/1",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "doctorsbyspecialist",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Schedule by Department and Doctor",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 126\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/schedulebyDP/33/1831",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "schedulebyDP",
+                "33",
+                "1831"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Schedule by Doctor",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 126\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/schedulebyPid/1589",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "schedulebyPid",
+                "1589"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Detail Schedule by schedule ID",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 126\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/schedulebyDsid/1346",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "schedulebyDsid",
+                "1346"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get polyclinic by Doctor",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 126\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/polibydoctor/1589",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "polibydoctor",
+                "1589"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Specialist Doctors and Schedule",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 126\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/SpecialistDoctorsSchedule",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "SpecialistDoctorsSchedule"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Hospital",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/rs",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "rs"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Validate MR",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmRhYTVlMWU3MDU5MjQ1M2FhMDE0ZGRhMWVkYTUzNDVkMmY3N2ZjNDRlZjUwYzllZDFlOWRjZTc2MTE1YWY2M2Y4MmU5ZTY5N2U0NDQ3NzQiLCJpYXQiOjE3NTYxMTUxMzguMDQ4NDkxLCJuYmYiOjE3NTYxMTUxMzguMDQ4NDkzLCJleHAiOjE3ODc2NTExMzguMDQ1NjMzLCJzdWIiOiIzNCIsInNjb3BlcyI6W119.msYW9x9fsg4MAlNHJQquvdS57VUqE7n-UzPs8_zk-jzXCJoWU1bTHsDLre2amAD_CHYQL-YI0oaj8MZ7NoW78g",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "a",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"requestid\": \"verifikasi_rm\",\n    \"group\": true,\n    \"rsid\": 126,\n    \"method\": \"form-data\",\n    \"data\": {\n        \"no_rm\": \"00-00-01-00\",\n        \"tgl_lahir\": \"1977-01-16\"\n    }\n}"
+            },
+            "url": {
+              "raw": "{{url_prod}}/api/v1/passing",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "passing"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CheckinPatient",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmRhYTVlMWU3MDU5MjQ1M2FhMDE0ZGRhMWVkYTUzNDVkMmY3N2ZjNDRlZjUwYzllZDFlOWRjZTc2MTE1YWY2M2Y4MmU5ZTY5N2U0NDQ3NzQiLCJpYXQiOjE3NTYxMTUxMzguMDQ4NDkxLCJuYmYiOjE3NTYxMTUxMzguMDQ4NDkzLCJleHAiOjE3ODc2NTExMzguMDQ1NjMzLCJzdWIiOiIzNCIsInNjb3BlcyI6W119.msYW9x9fsg4MAlNHJQquvdS57VUqE7n-UzPs8_zk-jzXCJoWU1bTHsDLre2amAD_CHYQL-YI0oaj8MZ7NoW78g",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "a",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"requestid\": \"verifikasi_rm\",\n    \"group\": true,\n    \"rsid\": 126,\n    \"method\": \"form-data\",\n    \"data\": {\n        \"no_rm\": \"00-00-01-00\",\n        \"tgl_lahir\": \"1977-01-16\"\n    }\n}"
+            },
+            "url": {
+              "raw": "{{url_prod}}/api/v1/passing",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "passing"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Custom Api",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmRhYTVlMWU3MDU5MjQ1M2FhMDE0ZGRhMWVkYTUzNDVkMmY3N2ZjNDRlZjUwYzllZDFlOWRjZTc2MTE1YWY2M2Y4MmU5ZTY5N2U0NDQ3NzQiLCJpYXQiOjE3NTYxMTUxMzguMDQ4NDkxLCJuYmYiOjE3NTYxMTUxMzguMDQ4NDkzLCJleHAiOjE3ODc2NTExMzguMDQ1NjMzLCJzdWIiOiIzNCIsInNjb3BlcyI6W119.msYW9x9fsg4MAlNHJQquvdS57VUqE7n-UzPs8_zk-jzXCJoWU1bTHsDLre2amAD_CHYQL-YI0oaj8MZ7NoW78g",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "a",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"requestid\": \"verifikasi_rm\",\n    \"group\": true,\n    \"rsid\": 126,\n    \"method\": \"form-data\",\n    \"data\": {\n        \"no_rm\": \"00-00-01-00\",\n        \"tgl_lahir\": \"1977-01-16\"\n    }\n}"
+            },
+            "url": {
+              "raw": "{{url_prod}}/api/v1/passing",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "passing"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Appointment / Perjanjian",
+      "item": [
+        {
+          "name": "Create Appointment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "pid",
+                  "value": "1815",
+                  "type": "text"
+                },
+                {
+                  "key": "dsid",
+                  "value": "1360",
+                  "type": "text"
+                },
+                {
+                  "key": "birthdate",
+                  "value": "1982-06-02",
+                  "type": "text"
+                },
+                {
+                  "key": "tanggal",
+                  "value": "2022-08-29",
+                  "type": "text"
+                },
+                {
+                  "key": "rsid",
+                  "value": "126",
+                  "type": "text"
+                },
+                {
+                  "key": "name",
+                  "value": "Testing Aulia",
+                  "type": "text"
+                },
+                {
+                  "key": "sex",
+                  "value": "F",
+                  "type": "text"
+                },
+                {
+                  "key": "hp",
+                  "value": "082142563327",
+                  "type": "text"
+                },
+                {
+                  "key": "alamat",
+                  "value": "jalan nusa indah raya",
+                  "type": "text"
+                },
+                {
+                  "key": "asuransi",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "birthplace",
+                  "value": "Indonesia",
+                  "type": "text"
+                },
+                {
+                  "key": "cob",
+                  "value": " ",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "did",
+                  "value": "305",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "txt_asuransi",
+                  "value": " ",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "norujukan",
+                  "value": " ",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "nobpjs",
+                  "value": "",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/appointment",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "appointment"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel Appointment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 126,\n    \"kode_booking\": \"21E08HNLG\",\n    \"birthdate\": \"1989-05-10\"\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/cancelappointment_bycode",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "cancelappointment_bycode"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Appointment by Patient",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 126,\n    \"mrid\": \"174934\",\n    \"birthdate\": \"1992-09-30\"\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/listappointment?page=1",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "listappointment"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Appointment by Hospital",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 126\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/listappointmentRS?page=2",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "listappointmentRS"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Group Schedule (recommended)",
+      "item": [
+        {
+          "name": "/SpecialistAndDoctors",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 126\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/SpecialistAndDoctors",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "SpecialistAndDoctors"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/SpecialistDoctorsSchedule",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 126\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/SpecialistDoctorsSchedule",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "SpecialistDoctorsSchedule"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/SpecialistDoctorsSchedulePoli",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 126\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/SpecialistDoctorsSchedulePoli",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "SpecialistDoctorsSchedulePoli"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "requests": {},
+        "exec": [
+          "// Ambil base URL dari Collection Variable dulu, fallback ke Environment",
+          "const baseUrl = pm.collectionVariables.get(\"url\") || pm.environment.get(\"url\");",
+          "const tokenUrl = baseUrl + \"/api/v1/login\";",
+          "",
+          "// Ambil username & password dari Collection Variables",
+          "const clientId = pm.collectionVariables.get(\"username\");",
+          "const clientSecret = pm.collectionVariables.get(\"password\");",
+          "",
+          "// Siapkan request token",
+          "const getTokenRequest = {",
+          "  method: 'POST',",
+          "  url: tokenUrl,",
+          "  header: {",
+          "    'Accept': '*/*',",
+          "    'Content-Type': 'application/x-www-form-urlencoded',",
+          "  },",
+          "  body: {",
+          "    mode: 'urlencoded',",
+          "    urlencoded: [",
+          "      { key: \"username\", value: clientId },",
+          "      { key: \"password\", value: clientSecret }",
+          "    ]",
+          "  }",
+          "};",
+          "",
+          "// Kirim request dan tangani responsenya",
+          "pm.sendRequest(getTokenRequest, (err, response) => {",
+          "  if (err) {",
+          "    console.error(\"Request error:\", err);",
+          "    return;",
+          "  }",
+          "",
+          "  try {",
+          "    const jsonResponse = response.json();",
+          "    const newAccessToken = jsonResponse.token;",
+          "",
+          "    if (newAccessToken) {",
+          "      pm.variables.set(\"access_token\", newAccessToken);",
+          "      console.log(\"Access token set:\", newAccessToken);",
+          "    } else {",
+          "      console.warn(\"Token tidak ditemukan di response:\", jsonResponse);",
+          "    }",
+          "  } catch (e) {",
+          "    console.error(\"Gagal parse JSON:\", e);",
+          "    console.log(\"Response text:\", response.text());",
+          "  }",
+          "});"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "username",
+      "value": "tera_demo_api"
+    },
+    {
+      "key": "password",
+      "value": "123456"
+    },
+    {
+      "key": "url",
+      "value": "https://v3-api-webservice-dev.teramobile.app"
+    },
+    {
+      "key": "access_token",
+      "value": ""
+    },
+    {
+      "key": "url_prod",
+      "value": "https://v3-api-webservice.teramobile.app"
+    }
+  ]
+}

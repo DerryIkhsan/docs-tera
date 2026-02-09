@@ -1,0 +1,2006 @@
+{
+  "info": {
+    "_postman_id": "18f5867f-d388-444b-9f0f-a5fd0746f6b8",
+    "name": "Open API V2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "33469993"
+  },
+  "item": [
+    {
+      "name": "POST",
+      "item": [
+        {
+          "name": "/login",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "// if (pm.request.body && ",
+                  "//    (pm.request.body.mode === 'urlencoded' || pm.request.body.mode === 'formdata')) {",
+                  "",
+                  "//     let currentUrl = pm.request.url.toString();",
+                  "",
+                  "//     // Hilangkan {{ }}",
+                  "//     let cleanUrl = currentUrl.replace(/{{|}}/g, '');",
+                  "",
+                  "//     const urlParts = cleanUrl.split(\"/\");",
+                  "//     const pathOnly = urlParts[0];",
+                  "",
+                  "//     console.log('pathOnly:', pathOnly);",
+                  "",
+                  "//     // Ambil base URL",
+                  "//     const urlProd = pm.collectionVariables.get(\"url_prod\") || pm.environment.get(\"url_prod\");",
+                  "//     const urlDev  = pm.collectionVariables.get(\"url\") || pm.environment.get(\"url\");",
+                  "",
+                  "//     const baseUrl = pathOnly === 'url' ? urlDev : urlProd;",
+                  "//     const tokenUrl = baseUrl + \"/api/v1/login\";",
+                  "",
+                  "//     let username = '';",
+                  "//     let password = '';",
+                  "",
+                  "//     /* ===============================",
+                  "//        Ambil body berdasarkan mode",
+                  "//        =============================== */",
+                  "//     if (pm.request.body.mode === 'urlencoded') {",
+                  "//         const bodyData = pm.request.body.urlencoded.toObject();",
+                  "//         username = bodyData.username || '';",
+                  "//         password = bodyData.password || '';",
+                  "//     }",
+                  "",
+                  "//     if (pm.request.body.mode === 'formdata') {",
+                  "//         const formData = pm.request.body.formdata;",
+                  "//         formData.each(item => {",
+                  "//             if (item.key === 'username') username = item.value;",
+                  "//             if (item.key === 'password') password = item.value;",
+                  "//         });",
+                  "//     }",
+                  "",
+                  "//     if (!username || !password) {",
+                  "//         console.warn(\"Username atau password kosong\");",
+                  "//         return;",
+                  "//     }",
+                  "",
+                  "//     /* ===============================",
+                  "//        Request ambil token",
+                  "//        =============================== */",
+                  "//     const getTokenRequest = {",
+                  "//         method: 'POST',",
+                  "//         url: tokenUrl,",
+                  "//         header: {",
+                  "//             'Accept': '*/*',",
+                  "//             'Content-Type': 'application/x-www-form-urlencoded'",
+                  "//         },",
+                  "//         body: {",
+                  "//             mode: 'urlencoded',",
+                  "//             urlencoded: [",
+                  "//                 { key: \"username\", value: username },",
+                  "//                 { key: \"password\", value: password }",
+                  "//             ]",
+                  "//         }",
+                  "//     };",
+                  "",
+                  "//     pm.sendRequest(getTokenRequest, (err, response) => {",
+                  "//         if (err) {",
+                  "//             console.error(\"Request error:\", err);",
+                  "//             return;",
+                  "//         }",
+                  "",
+                  "//         try {",
+                  "//             const jsonResponse = response.json();",
+                  "//             const newAccessToken = jsonResponse.token;",
+                  "",
+                  "//             if (newAccessToken) {",
+                  "//                 pm.collectionVariables.set(\"access_token\", newAccessToken);",
+                  "//                 console.log(\"Access token set:\", newAccessToken);",
+                  "//             } else {",
+                  "//                 console.warn(\"Token tidak ditemukan:\", jsonResponse);",
+                  "//             }",
+                  "//         } catch (e) {",
+                  "//             console.error(\"Gagal parse JSON:\", e);",
+                  "//             console.log(\"Response:\", response.text());",
+                  "//         }",
+                  "//     });",
+                  "",
+                  "// } else {",
+                  "//     console.error(\"Body request tidak didukung (gunakan urlencoded atau form-data)\");",
+                  "// }",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (!pm.response) {\r",
+                  "    console.error(\"Response tidak tersedia\");\r",
+                  "    return;\r",
+                  "}\r",
+                  "\r",
+                  "try {\r",
+                  "    const res = pm.response.json();\r",
+                  "\r",
+                  "    // sesuaikan jika struktur response berbeda\r",
+                  "    const accessToken = res.token || res.data?.token;\r",
+                  "\r",
+                  "    if (!accessToken) {\r",
+                  "        console.warn(\"Access token tidak ditemukan:\", res);\r",
+                  "        return;\r",
+                  "    }\r",
+                  "\r",
+                  "    // Simpan ke Collection\r",
+                  "    pm.collectionVariables.set(\"access_token\", accessToken);\r",
+                  "\r",
+                  "    // Simpan ke Environment (opsional tapi disarankan)\r",
+                  "    pm.environment.set(\"access_token\", accessToken);\r",
+                  "\r",
+                  "    console.log(\"Access token berhasil di-update:\", accessToken);\r",
+                  "\r",
+                  "} catch (e) {\r",
+                  "    console.error(\"Gagal parse response login:\", e);\r",
+                  "    console.log(\"Response text:\", pm.response.text());\r",
+                  "}\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {}
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "username",
+                  "value": "derry_api_dev",
+                  "type": "text",
+                  "uuid": "9b807f16-3687-49a1-8a8e-18bf7f072681"
+                },
+                {
+                  "key": "password",
+                  "value": "123456",
+                  "type": "text",
+                  "uuid": "dd407ac2-c59a-4625-a77f-8be4029d871f"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/login",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/passing for validate MR",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "a",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"requestid\": \"verifikasi_rm\",\n    \"group\": true,\n    \"rsid\": 19,\n    \"data\": {\n        \"pid\": \"08-00-11-90\",\n        \"birth_date\": \"1992-09-30\"\n    }\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/passing",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "passing"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/appointment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "mrid",
+                  "value": "",
+                  "type": "text",
+                  "description": "opsional, bisa dikosongkan untuk pasien baru",
+                  "disabled": true
+                },
+                {
+                  "key": "tanggal",
+                  "value": "2026-01-14",
+                  "type": "text"
+                },
+                {
+                  "key": "pid",
+                  "value": "7117",
+                  "type": "text"
+                },
+                {
+                  "key": "dsid",
+                  "value": "8727",
+                  "type": "text"
+                },
+                {
+                  "key": "name",
+                  "value": "Testing Derry",
+                  "type": "text"
+                },
+                {
+                  "key": "sex",
+                  "value": "M",
+                  "type": "text"
+                },
+                {
+                  "key": "hp",
+                  "value": "0812222222",
+                  "type": "text"
+                },
+                {
+                  "key": "alamat",
+                  "value": "Bandung",
+                  "type": "text"
+                },
+                {
+                  "key": "asuransi",
+                  "value": "1",
+                  "type": "text",
+                  "description": "1: umum, 2 asuransi"
+                },
+                {
+                  "key": "birthplace",
+                  "value": "Bandung",
+                  "type": "text"
+                },
+                {
+                  "key": "birthdate",
+                  "value": "2000-01-01",
+                  "type": "text"
+                },
+                {
+                  "key": "rsid",
+                  "value": "19",
+                  "type": "text"
+                },
+                {
+                  "key": "userid_userapi",
+                  "value": "1234",
+                  "type": "text",
+                  "description": "jika website mengelola user sendiri, masukkan userid pasien, untuk tracking status perjanjian",
+                  "disabled": true
+                },
+                {
+                  "key": "nik",
+                  "value": "3174074712980002",
+                  "type": "text",
+                  "uuid": "053d9fb6-5fe1-475f-8bcf-69f7a7da76db"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/appointment",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "appointment"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/appointmentWithSlot (custom brawijaya only)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "mrid",
+                  "value": "",
+                  "type": "text",
+                  "description": "opsional, bisa dikosongkan untuk pasien baru",
+                  "disabled": true
+                },
+                {
+                  "key": "tanggal",
+                  "value": "2026-01-14",
+                  "type": "text"
+                },
+                {
+                  "key": "pid",
+                  "value": "7117",
+                  "type": "text"
+                },
+                {
+                  "key": "dsid",
+                  "value": "8727",
+                  "type": "text"
+                },
+                {
+                  "key": "name",
+                  "value": "Testing Derry",
+                  "type": "text"
+                },
+                {
+                  "key": "sex",
+                  "value": "M",
+                  "type": "text"
+                },
+                {
+                  "key": "hp",
+                  "value": "0812222222",
+                  "type": "text"
+                },
+                {
+                  "key": "alamat",
+                  "value": "Bandung",
+                  "type": "text"
+                },
+                {
+                  "key": "asuransi",
+                  "value": "1",
+                  "type": "text",
+                  "description": "1: umum, 2 asuransi"
+                },
+                {
+                  "key": "birthplace",
+                  "value": "Bandung",
+                  "type": "text"
+                },
+                {
+                  "key": "birthdate",
+                  "value": "2000-01-01",
+                  "type": "text"
+                },
+                {
+                  "key": "rsid",
+                  "value": "19",
+                  "type": "text"
+                },
+                {
+                  "key": "userid_userapi",
+                  "value": "1234",
+                  "type": "text",
+                  "description": "jika website mengelola user sendiri, masukkan userid pasien, untuk tracking status perjanjian",
+                  "disabled": true
+                },
+                {
+                  "key": "nik",
+                  "value": "3174074712980002",
+                  "type": "text"
+                },
+                {
+                  "key": "jam_reservasi",
+                  "value": "18:00",
+                  "type": "text"
+                },
+                {
+                  "key": "no_urut",
+                  "value": "13",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/appointmentWithSlot",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "appointmentWithSlot"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/listappointment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 19,\n    \"mrid\": \"08-00-11-90\",\n    \"birthdate\": \"1992-09-30\"\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/listappointment?page=1",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "listappointment"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/cancelappointment_bycode",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"group\": true,\r\n    \"rsid\": 10,\r\n    \"birthdate\": \"2000-01-01\",\r\n    \"kode_booking\": \"25D12RBPG\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/cancelappointment_bycode",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "cancelappointment_bycode"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "cancelappointment_bybookcode",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"group\": true,\r\n    \"rsid\": 10,\r\n    \"kode_booking\": \"25S12UZAN\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/cancelappointment_bybookcode",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "cancelappointment_bybookcode"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/doctor_change_name",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"rsid\": 19,\n    \"pid_rs\": \"-508\",\n    \"name_real\": \"dr. Adhi Wicaksono, Sp.M MMTes\"\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/doctorChangeName",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "doctorChangeName"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "GET",
+      "item": [
+        {
+          "name": "/rs",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{url_prod}}/api/v1/rs",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "rs"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/doctorIdDuplicateTeramedik (custom brawijaya only)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true\n}"
+            },
+            "url": {
+              "raw": "{{url_prod}}/api/v1/nodokDouble",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "nodokDouble"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/doctorIdDuplicateCloud (custom brawijaya only)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true\n}"
+            },
+            "url": {
+              "raw": "{{url_prod}}/api/v1/nodokDouble",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "nodokDouble"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/doctorIdDifferentTeramedik (custom brawijaya only)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true\n}"
+            },
+            "url": {
+              "raw": "{{url_prod}}/api/v1/nodokDouble",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "nodokDouble"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/doctorIdDifferentCloud (custom brawijaya only)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true\n}"
+            },
+            "url": {
+              "raw": "{{url_prod}}/api/v1/nodokDouble",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "nodokDouble"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/doctors",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 7\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/doctors",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "doctors"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/poli",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\" : 19\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/poli",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "poli"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/specialist",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 7\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/specialist",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "specialist"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/doctorsbypoli/{did}",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 19\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/doctorsbypoli/470",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "doctorsbypoli",
+                "470"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/doctorsbyspecialist/{tmid}",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 19\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/doctorsbyspecialist/1",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "doctorsbyspecialist",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/schedulebyDP/{did}/{pid}",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 9",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_prod}}/api/v1/schedulebyDP/66/1397",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "schedulebyDP",
+                "66",
+                "1397"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/schedulebyPid/{pid}",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/schedulebyPid/1301",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "schedulebyPid",
+                "1301"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/schedulebyDsid/{dsid}",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 19\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/schedulebyDsid/5510",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "schedulebyDsid",
+                "5510"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/polibydoctor/{pid}",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 19\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/polibydoctor/4552",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "polibydoctor",
+                "4552"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/doctor_schedule_slot (custom brawijaya only)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 19\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/polibydoctor/4552",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "polibydoctor",
+                "4552"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/doctor_schedule_with_slot (custom brawijaya only)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"rsid\": 19,\n    \"date\": \"2025-12-31\",\n    \"dsid\": 8727\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/doctor_schedule_with_slot",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "doctor_schedule_with_slot"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/poli_doctor_schedule (custom brawijaya only)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"rsid\": 19\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/poli_doctor_schedule",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "poli_doctor_schedule"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Group",
+      "item": [
+        {
+          "name": "/DoctorsByRsSpecialist",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/DoctorsByRsSpecialist/?tmid=35,21",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "DoctorsByRsSpecialist",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "tmid",
+                  "value": "35,21"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/SpecialistByRs",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 19\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/SpecialistByRs",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "SpecialistByRs"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/SpecialistAllRs",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/SpecialistAllRs",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "SpecialistAllRs"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Spesialis Group",
+      "item": [
+        {
+          "name": "/SpecialistAllGroup",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/SpecialistAllGroup",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "SpecialistAllGroup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/SpecialistByGroup",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"tmgroupid\": \"5\",\n    \"rsid\": \"7\"\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/SpecialistByGroup",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "SpecialistByGroup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/AllSpecialistByTmGroup",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{url_prod}}/api/v1/AllSpecialistByTmGroup",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "AllSpecialistByTmGroup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/SpecialistAndDoctors",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 7\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/SpecialistAndDoctors",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "SpecialistAndDoctors"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/SpecialistDoctorsSchedule",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 9\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/SpecialistDoctorsSchedule",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "SpecialistDoctorsSchedule"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/SpecialistDoctorsSchedulePoli",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 9\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/SpecialistDoctorsSchedule",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "SpecialistDoctorsSchedule"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/SpecialistDoctorsScheduleAll",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"group\": true,\n    \"rsid\": 9\n}"
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/SpecialistDoctorsSchedule",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "SpecialistDoctorsSchedule"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{access_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "username",
+      "value": "brawijaya_devel"
+    },
+    {
+      "key": "password",
+      "value": "Brawc88KKyxzF"
+    },
+    {
+      "key": "url",
+      "value": "https://dev-api-webservice.teramobile.app"
+    },
+    {
+      "key": "url_prod",
+      "value": "https://api-webservice.teramobile.app"
+    },
+    {
+      "key": "access_token",
+      "value": ""
+    }
+  ]
+}
