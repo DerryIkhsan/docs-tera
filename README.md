@@ -27,6 +27,9 @@ Sebelum menjalankan proyek, pastikan kamu sudah menginstall:
 
 ---
 
+## Collection Open API V2
+[Postman Collection (JSON)](./collection/Open_API_V2.postman_collection.jsonn)
+
 ## 🌐 Open API V3
 Gambar arsitektur Open API V3:
 
