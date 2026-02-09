@@ -11,20 +11,18 @@
 ---
 
 ## 🌐 Open API Cloud
-Open API disediakan untuk menjembatani klien teramedik dalam memenuhi kebutuhan aplikasi ke-3 rumah sakit dalam bentuk web maupun mobile apps yang dikembangkan mandiri oleh vendor dari masing-masing rumah sakit.
-
-Untuk site rumah sakit yang masih menggunakan Open API V2 diantaranya brawijaya, daya medika dan ciputra (atau dapat dilihat pada dashboard admin cloud apps setup).
+Open API Cloud disediakan untuk menjembatani klien teramedik dalam memenuhi kebutuhan aplikasi ketiga rumah sakit dalam bentuk web maupun mobile apps yang dikembangkan mandiri oleh vendor dari masing-masing rumah sakit.
 
 ---
 
 
 ## 🏢 Arsitektur Open API Cloud
-Open API disediakan untuk menjembatani klien teramedik dalam memenuhi kebutuhan aplikasi ke-3 rumah sakit dalam bentuk web maupun mobile apps yang dikembangkan mandiri oleh vendor dari masing-masing rumah sakit.
 
-Untuk site rumah sakit yang masih menggunakan Open API V2 diantaranya brawijaya, daya medika dan ciputra (atau dapat dilihat pada dashboard admin cloud apps setup).
+**- Gambar Arsitektur Open API Cloud V2**
 
 <img width="1920" height="1080" alt="Open API Cloud V2 (2)" src="https://github.com/user-attachments/assets/dc87a3a9-64ab-4ff2-a43a-e1105c6e6bd0" />
 
+Dalam gambar tersebut dapat dijelaskan bahwa arsitektur open api cloud v2 berfungsi sebagai jembatan (API Gateway) yang memungkinkan aplikasi pihak ketiga berinteraksi dengan sistem rumah sakit (Teramedik HIS) tanpa mengakses database utama HIS secara langsung. Data dari HIS disinkronkan oleh Backend Sync ke Cloud Database agar bisa diakses oleh API Cloud. Sementara untuk transaksi antara API Cloud dan HIS dijembatani oleh Webservice internal HIS untuk memastikan data tetap sinkron dan valid di kedua sisi.
 
 ---
 
