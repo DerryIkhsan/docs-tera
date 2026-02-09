@@ -17,10 +17,14 @@ Untuk site rumah sakit yang masih menggunakan Open API V2 diantaranya brawijaya,
 
 ---
 
+
 ## Arsitektur Open API Cloud
 Open API disediakan untuk menjembatani klien teramedik dalam memenuhi kebutuhan aplikasi ke-3 rumah sakit dalam bentuk web maupun mobile apps yang dikembangkan mandiri oleh vendor dari masing-masing rumah sakit.
 
 Untuk site rumah sakit yang masih menggunakan Open API V2 diantaranya brawijaya, daya medika dan ciputra (atau dapat dilihat pada dashboard admin cloud apps setup).
+
+<img width="1920" height="1080" alt="Open API Cloud V2 (2)" src="https://github.com/user-attachments/assets/dc87a3a9-64ab-4ff2-a43a-e1105c6e6bd0" />
+
 
 ---
 
