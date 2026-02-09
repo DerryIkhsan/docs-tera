@@ -26,6 +26,8 @@ asdasdsa
 ## 📖 Collection Open API Cloud
 [**Collection Open API V2**](./collection/Open_API_V2.postman_collection.json)
 
+---
+
 ## 🌐 Path Project Open API Cloud
 Gambar arsitektur Open API V3:
 
