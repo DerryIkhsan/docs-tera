@@ -1,7 +1,7 @@
 # 📘 Catatan Teknis Open API dan Cloud Apps Setup (V2 & V3)
 
 ## 📖 Deskripsi
-Open API disediakan untuk menjembatani klien teramedik dalam memenuhi kebutuhan aplikasi ke-3 rumah sakit dalam bentuk web maupun mobile apps yang dikembangkan mandiri oleh vendor dari masing-masing rumah sakit, sedangkan Cloud Apps Setup digunakan untuk mapping open api antara his dengan Cloud Open Api.
+Open API disediakan untuk menjembatani klien teramedik dalam memenuhi kebutuhan aplikasi ke-3 rumah sakit dalam bentuk web maupun mobile apps yang dikembangkan mandiri oleh vendor dari masing-masing rumah sakit, sedangkan Cloud Apps Setup digunakan untuk mapping open api antara his dengan Open API.
 
 ---
 
