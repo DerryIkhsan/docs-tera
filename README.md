@@ -24,6 +24,12 @@ Open API Cloud merupakan jembatan (API Gateway) yang disediakan teramedik untuk 
 
 Dalam gambar tersebut dapat dijelaskan bahwa arsitektur open api cloud v2 berfungsi sebagai jembatan (API Gateway) yang memungkinkan aplikasi pihak ketiga berinteraksi dengan sistem rumah sakit (Teramedik HIS) tanpa mengakses database utama HIS secara langsung. Data dari HIS disinkronkan oleh Backend Sync ke Cloud Database agar bisa diakses oleh API Cloud. Sementara untuk transaksi antara API Cloud dan HIS dijembatani oleh Webservice internal HIS untuk memastikan data tetap sinkron dan valid di kedua sisi.
 
+**- Gambar Arsitektur Open API Cloud V3**
+
+<img width="1920" height="1080" alt="Open API Cloud V3 (1)" src="https://github.com/user-attachments/assets/80cef3b6-c9e5-4486-9545-e5ae608fadba" />
+
+Arsitektur open api cloud v3 hampir mirip dengan open api cloud v2 yang hanya berbeda cara transaksi antara API Cloud dengan HIS, dimana pada open api cloud v3 transaksi antara API Cloud dan sistem rumah sakit (Teramedik HIS) sinkron langsung tanpa melalui Webservice internal HIS.
+
 ---
 
 ## 📖 Collection Open API Cloud
