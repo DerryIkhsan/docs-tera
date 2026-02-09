@@ -11,7 +11,7 @@
 ---
 
 ## 🌐 Open API Cloud
-Open API Cloud disediakan untuk menjembatani klien teramedik dalam memenuhi kebutuhan aplikasi ketiga rumah sakit dalam bentuk web maupun mobile apps yang dikembangkan mandiri oleh vendor dari masing-masing rumah sakit.
+Open API Cloud merupakan jembatan (API Gateway) yang disediakan teramedik untuk memenuhi kebutuhan klien teramedik dalam pengembangan aplikasi pihak ketiga rumah sakit, seperti untuk pengembangan aplikasi web maupun mobile apps yang dikembangkan mandiri oleh vendor dari masing-masing rumah sakit.
 
 ---
 
