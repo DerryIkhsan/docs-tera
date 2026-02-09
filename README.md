@@ -7,8 +7,8 @@ Open API disediakan untuk menjembatani klien teramedik dalam memenuhi kebutuhan 
 
 ## 📋 Daftar Isi
 1. [Open API V2](#-open-api-v2)
-2. [Instalasi](#-instalasi)
-3. [Arsitektur Sistem](#-arsitektur-sistem)
+2. [Arsitektur Sistem](#-arsitektur-open-api-v2)
+3. [Collection Open API V2](#-collection-open-api-v2)
 4. [Dokumentasi API](#-dokumentasi-api)
 5. [Skema Database](#-skema-database)
 6. [Catatan Handover](#-catatan-handover)
@@ -16,18 +16,18 @@ Open API disediakan untuk menjembatani klien teramedik dalam memenuhi kebutuhan 
 ---
 
 ## 🌐 Open API V2
-Gambar arsitektur Open API V2:
+Open API disediakan untuk menjembatani klien teramedik dalam memenuhi kebutuhan aplikasi ke-3 rumah sakit dalam bentuk web maupun mobile apps yang dikembangkan mandiri oleh vendor dari masing-masing rumah sakit.
 
-<img width="1920" height="1080" alt="Open API Cloud V2 (2)" src="https://github.com/user-attachments/assets/265a2009-d045-4378-8ce2-d77de5ae60ab" />
-
-Sebelum menjalankan proyek, pastikan kamu sudah menginstall:
-- **Node.js** v18 atau lebih baru
-- **Docker & Docker Compose**
-- **PostgreSQL** v14
+Untuk site rumah sakit yang masih menggunakan Open API V2 diantaranya brawijaya, daya medika dan ciputra (atau dapat dilihat pada dashboard admin cloud apps setup).
 
 ---
 
-## Collection Open API V2
+## Arsitektur Open API V2
+<img width="1920" height="1080" alt="Open API Cloud V2 (2)" src="https://github.com/user-attachments/assets/265a2009-d045-4378-8ce2-d77de5ae60ab" />
+
+---
+
+## 📖 Collection Open API V2
 [ **Open API V2 Collection**](./collection/Open_API_V2.postman_collection.json)
 
 ## 🌐 Open API V3
