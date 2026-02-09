@@ -22,15 +22,7 @@ Arsitektur ini berfungsi sebagai jembatan yang memungkinkan aplikasi pihak ketig
 
 * **Data Sync**: Data dari HIS disinkronkan oleh *Backend Sync* ke *Cloud Database*.
 * **Transaksi**: Interaksi antara API Cloud dan HIS dijembatani oleh **Webservice internal HIS** untuk memastikan validitas data di kedua sisi.
-
-#### 📥 Alur Request Client Apps (Hit API)
-Ketika Client Apps melakukan permintaan ke API Cloud, proses berikut terjadi:
-1. **Authentication**: API Cloud memvalidasi *API Key/Token* dari client.
-2. **Request Routing**: Sistem menentukan apakah mengambil data dari *Cloud Database* (untuk data hasil sinkronisasi) atau meneruskan ke *Webservice HIS* (untuk transaksi real-time).
-3. **Data Processing**: 
-   - **Read**: Mengambil data cepat dari *Cloud Database*.
-   - **Write**: Mengirim data ke *Webservice HIS* untuk validasi sistem inti.
-4. **Response**: API Cloud mengembalikan data dalam format JSON ke client.
+* **Data Request**: Mekanisme di mana *Client Apps* memanggil (hit) endpoint **API Cloud** untuk mendapatkan respon data, baik yang bersumber dari *Cloud Database* maupun data langsung dari sistem rumah sakit.
 
 <img width="1920" height="1080" alt="Open API Cloud V2" src="https://github.com/user-attachments/assets/dc87a3a9-64ab-4ff2-a43a-e1105c6e6bd0" />
 
