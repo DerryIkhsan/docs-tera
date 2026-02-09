@@ -45,5 +45,22 @@ Collection open api cloud v2 dan open api cloud v3 dapat di download pada link b
 ---
 
 ## 🌐 Path Project Open API Cloud
-Path Project
+
+**Open API Cloud V2 (Server ALI CLOUD)**
+Production :
+- path backendsync : /var/www/production/api-v2.1
+- path open api : /var/www/cloud-webservice/production
+
+Devel/Staging :
+- path backendsync : /var/www/devel/group/api
+- path open api : /var/www/cloud-webservice/devel
+
+**Open API Cloud V3 (Server GCP Mobile Production)**
+Production :
+- path backendsync : /var/www/production/backendsync
+- path open api : /var/www/production/cloud-webservice
+
+Devel/Staging :
+- path backendsync : /var/www/staging/backendsync
+- path open api : /var/www/staging/cloud-webservice
 
