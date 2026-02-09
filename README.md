@@ -1,13 +1,10 @@
-# 📘 Catatan Teknis Open API dan Cloud Apps Setup (V2 & V3)
-
-## 📖 Deskripsi
-Open API disediakan untuk menjembatani klien teramedik dalam memenuhi kebutuhan aplikasi ke-3 rumah sakit dalam bentuk web maupun mobile apps yang dikembangkan mandiri oleh vendor dari masing-masing rumah sakit, sedangkan Cloud Apps Setup digunakan untuk mapping open api antara his dengan Open API.
+# 📘 Catatan Teknis Open API Cloud (V2 & V3)
 
 ---
 
 ## 📋 Daftar Isi
 1. [Open API V2](#-open-api-v2)
-2. [Arsitektur Sistem](#-arsitektur-open-api-v2)
+2. [Arsitektur Open API V2](#-arsitektur-open-api-v2)
 3. [Collection Open API V2](#-collection-open-api-v2)
 4. [Dokumentasi API](#-dokumentasi-api)
 5. [Skema Database](#-skema-database)
@@ -15,15 +12,15 @@ Open API disediakan untuk menjembatani klien teramedik dalam memenuhi kebutuhan 
 
 ---
 
-## 🌐 Open API V2
+## 🌐 Open API Cloud V2
 Open API disediakan untuk menjembatani klien teramedik dalam memenuhi kebutuhan aplikasi ke-3 rumah sakit dalam bentuk web maupun mobile apps yang dikembangkan mandiri oleh vendor dari masing-masing rumah sakit.
 
 Untuk site rumah sakit yang masih menggunakan Open API V2 diantaranya brawijaya, daya medika dan ciputra (atau dapat dilihat pada dashboard admin cloud apps setup).
 
 ---
 
-## Arsitektur Open API V2
-<img width="1920" height="1080" alt="Open API Cloud V2 (2)" src="https://github.com/user-attachments/assets/265a2009-d045-4378-8ce2-d77de5ae60ab" />
+## 🏗️ Arsitektur Open API Cloud V2
+<img width="1920" height="1080" alt="Arsitektur Open API Cloud V2" src="https://github.com/user-attachments/assets/265a2009-d045-4378-8ce2-d77de5ae60ab" />
 
 ---
 
