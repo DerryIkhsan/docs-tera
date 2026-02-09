@@ -3,64 +3,68 @@
 ---
 
 ## 📋 Daftar Isi
-1. [Open API Cloud](#-open-api-cloud)
-2. [Arsitektur Open API Cloud](#-arsitektur-open-api-cloud)
-3. [Collection Open API Cloud](#-collection-open-api-cloud)
-4. [Path Project Open API Cloud](#-path-project-open-api-cloud)
+1. [Open API Cloud](#open-api-cloud)
+2. [Arsitektur Open API Cloud](#arsitektur-cloud)
+3. [Collection Open API Cloud](#collection-api)
+4. [Path Project Open API Cloud](#path-project)
 
 ---
 
-## 🌐 Open API Cloud
-Open API Cloud merupakan jembatan (API Gateway) yang disediakan teramedik untuk memenuhi kebutuhan klien teramedik dalam pengembangan aplikasi pihak ketiga rumah sakit, seperti untuk pengembangan aplikasi web maupun mobile apps yang dikembangkan mandiri oleh vendor dari masing-masing rumah sakit.
+## <a name="open-api-cloud"></a>🌐 Open API Cloud
+Open API Cloud merupakan jembatan (**API Gateway**) yang disediakan Teramedik untuk memenuhi kebutuhan klien dalam pengembangan aplikasi pihak ketiga rumah sakit. Ini mencakup pengembangan aplikasi web maupun mobile yang dikembangkan secara mandiri oleh vendor dari masing-masing rumah sakit.
 
 ---
 
+## <a name="arsitektur-cloud"></a>🏢 Arsitektur Open API Cloud
 
-## 🏢 Arsitektur Open API Cloud
+### 1. Arsitektur Open API Cloud V2
+Arsitektur ini berfungsi sebagai jembatan yang memungkinkan aplikasi pihak ketiga berinteraksi dengan **Teramedik HIS** tanpa mengakses database utama secara langsung.
 
-**1. Arsitektur Open API Cloud V2**
+* **Data Sync**: Data dari HIS disinkronkan oleh *Backend Sync* ke *Cloud Database*.
+* **Transaksi**: Interaksi antara API Cloud dan HIS dijembatani oleh **Webservice internal HIS** untuk memastikan validitas data di kedua sisi.
 
-Pada gambar dibawah dapat dijelaskan bahwa arsitektur open api cloud v2 berfungsi sebagai jembatan (API Gateway) yang memungkinkan aplikasi pihak ketiga berinteraksi dengan sistem rumah sakit (Teramedik HIS) tanpa mengakses database utama HIS secara langsung. Data dari HIS disinkronkan oleh Backend Sync ke Cloud Database agar bisa diakses oleh API Cloud. Sementara untuk transaksi antara API Cloud dan HIS dijembatani oleh Webservice internal HIS untuk memastikan data tetap sinkron dan valid di kedua sisi.
+#### 📥 Alur Request Client Apps (Hit API)
+Ketika Client Apps melakukan permintaan ke API Cloud, proses berikut terjadi:
+1. **Authentication**: API Cloud memvalidasi *API Key/Token* dari client.
+2. **Request Routing**: Sistem menentukan apakah mengambil data dari *Cloud Database* (untuk data hasil sinkronisasi) atau meneruskan ke *Webservice HIS* (untuk transaksi real-time).
+3. **Data Processing**: 
+   - **Read**: Mengambil data cepat dari *Cloud Database*.
+   - **Write**: Mengirim data ke *Webservice HIS* untuk validasi sistem inti.
+4. **Response**: API Cloud mengembalikan data dalam format JSON ke client.
 
-<img width="1920" height="1080" alt="Open API Cloud V2 (2)" src="https://github.com/user-attachments/assets/dc87a3a9-64ab-4ff2-a43a-e1105c6e6bd0" />
-
-
-**2. Arsitektur Open API Cloud V3**
-
-Arsitektur open api cloud v3 hampir mirip dengan open api cloud v2 yang hanya berbeda dari cara transaksi antara API Cloud dengan HIS, dimana pada open api cloud v3 transaksi antara API Cloud dan sistem rumah sakit (Teramedik HIS) sinkron langsung tanpa melalui Webservice internal HIS.
-
-<img width="1920" height="1080" alt="Open API Cloud V3 (1)" src="https://github.com/user-attachments/assets/80cef3b6-c9e5-4486-9545-e5ae608fadba" />
-
- 
+<img width="1920" height="1080" alt="Open API Cloud V2" src="https://github.com/user-attachments/assets/dc87a3a9-64ab-4ff2-a43a-e1105c6e6bd0" />
 
 ---
 
-## 📖 Collection Open API Cloud
+### 2. Arsitektur Open API Cloud V3
+Secara fungsionalitas mirip dengan V2, namun memiliki perbedaan pada mekanisme transaksi. Pada **V3**, transaksi antara API Cloud dan sistem rumah sakit (**Teramedik HIS**) dilakukan secara **sinkron langsung** tanpa melalui *Webservice* internal HIS sebagai perantara tambahan.
 
-Collection open api cloud v2 dan open api cloud v3 dapat di download pada link berikut :
+<img width="1920" height="1080" alt="Open API Cloud V3" src="https://github.com/user-attachments/assets/80cef3b6-c9e5-4486-9545-e5ae608fadba" />
+
+---
+
+## <a name="collection-api"></a>📖 Collection Open API Cloud
+Dokumen koleksi API dapat diunduh pada tautan berikut:
 
 1. [**Collection Open API Cloud V2**](./collection/Open_API_V2.postman_collection.json)
 2. [**Collection Open API Cloud V3**](./collection/Open_API_V3.postman_collection.json)
 
 ---
 
-## 🌐 Path Project Open API Cloud
+## <a name="path-project"></a>🌐 Path Project Open API Cloud
 
-**Open API Cloud V2 (Server ALI CLOUD)**
-Production :
-- path backendsync : /var/www/production/api-v2.1
-- path open api : /var/www/cloud-webservice/production
+### 1. Open API Cloud V2 (Server ALI CLOUD)
+* **Production**
+  * Path Backend Sync: `/var/www/production/api-v2.1`
+  * Path Open API: `/var/www/cloud-webservice/production`
+* **Devel/Staging**
+  * Path Backend Sync: `/var/www/devel/group/api`
+  * Path Open API: `/var/www/cloud-webservice/devel`
 
-Devel/Staging :
-- path backendsync : /var/www/devel/group/api
-- path open api : /var/www/cloud-webservice/devel
-
-**Open API Cloud V3 (Server GCP Mobile Production)**
-Production :
-- path backendsync : /var/www/production/backendsync
-- path open api : /var/www/production/cloud-webservice
-
-Devel/Staging :
-- path backendsync : /var/www/staging/backendsync
-- path open api : /var/www/staging/cloud-webservice
-
+### 2. Open API Cloud V3 (Server GCP Mobile Production)
+* **Production**
+  * Path Backend Sync: `/var/www/production/backendsync`
+  * Path Open API: `/var/www/production/cloud-webservice`
+* **Devel/Staging**
+  * Path Backend Sync: `/var/www/staging/backendsync`
+  * Path Open API: `/var/www/staging/cloud-webservice`
