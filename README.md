@@ -6,7 +6,7 @@
 1. [Open API V2](#-open-api-v2)
 2. [Arsitektur Open API V2](#-arsitektur-open-api-v2)
 3. [Collection Open API V2](#-collection-open-api-v2)
-4. [Path dan Sourcre Project Open API](#-dokumentasi-api)
+4. [Path dan Source Project Open API](#-source-project-open-api)
 
 ---
 
@@ -30,7 +30,3 @@ Gambar arsitektur Open API V3:
 
 <img width="1920" height="1080" alt="Open API Cloud V3 (1)" src="https://github.com/user-attachments/assets/5a971d48-f8c7-46cc-94c5-4fa2a87ab36b" />
 
-1. **Clone repositori:**
-   ```bash
-   git clone [https://github.com/username/project-name.git](https://github.com/username/project-name.git)
-   cd project-name
