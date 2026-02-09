@@ -17,7 +17,7 @@ Untuk site rumah sakit yang masih menggunakan Open API V2 diantaranya brawijaya,
 
 ---
 
-## 🏗️ Arsitektur Open API Cloud
+## Arsitektur Open API Cloud
 <img width="1920" height="1080" alt="Arsitektur Open API Cloud V2" src="https://github.com/user-attachments/assets/265a2009-d045-4378-8ce2-d77de5ae60ab" />
 
 ---
