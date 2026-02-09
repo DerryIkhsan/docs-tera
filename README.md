@@ -28,12 +28,16 @@ Dalam gambar tersebut dapat dijelaskan bahwa arsitektur open api cloud v2 berfun
 
 <img width="1920" height="1080" alt="Open API Cloud V3 (1)" src="https://github.com/user-attachments/assets/80cef3b6-c9e5-4486-9545-e5ae608fadba" />
 
-Arsitektur open api cloud v3 hampir mirip dengan open api cloud v2 yang hanya berbeda cara transaksi antara API Cloud dengan HIS, dimana pada open api cloud v3 transaksi antara API Cloud dan sistem rumah sakit (Teramedik HIS) sinkron langsung tanpa melalui Webservice internal HIS.
+Arsitektur open api cloud v3 hampir mirip dengan open api cloud v2 yang hanya berbeda dari cara transaksi antara API Cloud dengan HIS, dimana pada open api cloud v3 transaksi antara API Cloud dan sistem rumah sakit (Teramedik HIS) sinkron langsung tanpa melalui Webservice internal HIS.
 
 ---
 
 ## 📖 Collection Open API Cloud
-[**Collection Open API V2**](./collection/Open_API_V2.postman_collection.json)
+
+Collection open api cloud v2 dan open api cloud v3 dapat di download pada link berikut :
+
+[**Collection Open API Cloud V2**](./collection/Open_API_V2.postman_collection.json)
+[**Collection Open API Cloud V3**](./collection/Open_API_V3.postman_collection.json)
 
 ---
 
